@@ -17,7 +17,7 @@ COMPRESS_CSS = {
             'media': 'screen,projection',
         },
     },
-    
+
     # other CSS groups goes here
 }
 
@@ -87,19 +87,19 @@ In this example, the template tags will render _http://cdn.example.com/css/one_c
 
 h4. CSS URL Replace Filter
 
-This is a really simple filter for doing Python string replacements on your CSS.  The use case for this is when you have root relative 
+This is a really simple filter for doing Python string replacements on your CSS.  The use case for this is when you have root relative
 urls defined in your css:
 
 <pre><code>
     body {background-image:url(/media/images/background.gif);}
 </code></pre>
 
-If you are compiling your media to live on another server, for example if you are deploying the compiled resources to Amazon S3, these 
-root relative urls will break.  That is of course unless you also deploy all the media so they stay relative.  However, then you limit yourself 
+If you are compiling your media to live on another server, for example if you are deploying the compiled resources to Amazon S3, these
+root relative urls will break.  That is of course unless you also deploy all the media so they stay relative.  However, then you limit yourself
 from being able to prefix the source with a date or version number.  Ideally, you should be able to control where the images are deployed
 and those might be different from where your js/css media are being served from.
 
-This filter offers a very simple solution.  Really too simple.  One could make the argument for just doing this search and replace manually 
+This filter offers a very simple solution.  Really too simple.  One could make the argument for just doing this search and replace manually
 after the fact, however, I like for my build process to be as automated as possible.  Therefore, I want to write down the rules/settings
 once and be able to repeat the build process when needed without thinking about the find and replace.
 
@@ -113,7 +113,7 @@ Enough babbling, here is an example settings.py section:
 
 This will run the CSSURLReplace filter after the CSS is compressed (it is safe to do this in any order, at least for this filter).  The URL_REPLACE_HOST
 is not required, just a variable I defined in my settings file to keep things clean (and to override in other environments -- this is obviously my dev
-settings file).  
+settings file).
 
 The COMPRESS_CSS_URL_REPLACE is the only required setting by this filter.  It takes a list of tuples, each tuple being exactly two strings.
 
@@ -164,7 +164,7 @@ Output in when <tt>settings.COMPRESS = True</tt>
   <script type="text/javascript" src="/media/js/all.js" charset="utf-8"></script>
 </code></pre>
 
-Now why is this good you ask? The more script sources the more impact on performence according to http://developer.yahoo.com/performance/rules.html#num_http 
+Now why is this good you ask? The more script sources the more impact on performence according to http://developer.yahoo.com/performance/rules.html#num_http
 which is true but if you are low bandwidth or superbig you may want to offload
 some horsepower to google which leads us as hinted in the example above to the next topic.
 
@@ -173,9 +173,9 @@ currently no reason to have external css files (Yes there are css frameworks asw
 
 h4. Google AJAX Libraries API
 
-So the reason for adding external urls support to django-compress is google ajax libraries api support (example above) but you may want to use it however you want. 
+So the reason for adding external urls support to django-compress is google ajax libraries api support (example above) but you may want to use it however you want.
 
-The advantages for offloading huge javascript libraries to google cdn is of course that your site will need a lot less bandwidth, even if you use far futures expires headers. But the superior reason is of course that the more sites that uses it, the bigger the chance is that your favorite js framework is already cached in your visitors browser. 
+The advantages for offloading huge javascript libraries to google cdn is of course that your site will need a lot less bandwidth, even if you use far futures expires headers. But the superior reason is of course that the more sites that uses it, the bigger the chance is that your favorite js framework is already cached in your visitors browser.
 
 Google also uses far future expires headers so don't worry about that. Don't worry about latency outside the US either. Here in sweden I measuerd a latencey of 39ms.
 

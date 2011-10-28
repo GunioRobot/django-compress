@@ -39,7 +39,7 @@ from compress.versioning.hash import SHA1Versioning
 
 class ShortSHA1Versioning(SHA1Versioning):
     """Custom SHA1Versioning class"""
-    
+
     def get_version(self, source_files):
         """Return the first 10 characters of the SHA-1 version string"""
         version = super(ShortSHA1Versioning, self).get_version(source_files)

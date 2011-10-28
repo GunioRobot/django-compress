@@ -14,7 +14,7 @@ Most modern browser implement "Heuristic expiration", so it will actually not be
 
 This technique obviously has a drawback, when you want to change your files, you need to change their names, since their URLs will be cached... that's right: forever! The solution to that is pretty obvious too: change the URLs.
 
-h3. django-compress with COMPRESS_VERSION 
+h3. django-compress with COMPRESS_VERSION
 
 If you specify <tt>COMPRESS_VERSION</tt> in your configuration, you can add a placeholder to the filenames to output the version number of the different files. See [Configuration]) for more information. The filename itself will be changed when any of the source files are updated.
 
@@ -66,7 +66,7 @@ h4. nginx
 nginx's <tt>ngx_http_headers_module</tt> provides the <tt>expires</tt> option, which control the <tt>Expires</tt> and <tt>Cache-Control</tt> HTTP headers.
 * [http://wiki.codemongers.com/NginxHttpHeadersModule ngx_http_headers_module in nginx documentation]
 
-h4. Example 
+h4. Example
 
 This will set expiration to the maximum expiration:
 <pre><code>
